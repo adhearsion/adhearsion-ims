@@ -34,4 +34,5 @@ The configuration for this plugin should be included in the Adhearsion project w
 	config.adhearsion_ims.cscf_address             = "192.168.0.2" #The Hostname or IP Address of the Call Session Control Function (CSCF) of the IMS, can not be nil
 	config.adhearsion_ims.originating_ims_identity = 'foobar.com'  #Originating IMS Identity for an Out of the Blue session, can not be nil
 	config.adhearsion_ims.uvp_address              = '192.168.0.3' #The Hostname or IP Address of the Universal Voice Platform (UVP) of the IMS
+	config.adhearsion_ims.exclude_routes           = ['foo'] #An array of routes to exclude from the route header
 
