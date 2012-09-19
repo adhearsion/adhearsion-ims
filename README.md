@@ -1,6 +1,8 @@
 adhearsion-ims
 ==============
 
+![Build Status](https://secure.travis-ci.org/adhearsion/adhearsion-ims.png)
+
 A gem that provides convenience methods for integration with the IP Multimedia Subsystem (IMS) when using PRISM and Rayo. This gem is an Adhearsion plugin.
 
 Usage
