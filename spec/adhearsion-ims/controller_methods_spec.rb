@@ -67,8 +67,15 @@ module Adhearsion::IMS
             headers[:route].should eql "#{Adhearsion::IMS::Plugin.config[:sbc_address]}|||1234|||4567"
           end
           
-          it "but removes appropriate route nodes when specified int he configuration" do
+          it "but removes appropriate route nodes when specified in the configuration" do
             Adhearsion::IMS::Plugin.config[:exclude_routes] = ['1234']
+            headers = subject.generate_isc_headers :b2bua
+            headers[:route].should eql "#{Adhearsion::IMS::Plugin.config[:sbc_address]}|||4567"
+            Adhearsion::IMS::Plugin.config[:exclude_routes] = []
+          end
+          
+          it "and removes appropriate matching route nodes when specified in the configuration" do
+            Adhearsion::IMS::Plugin.config[:exclude_routes] = ['12']
             headers = subject.generate_isc_headers :b2bua
             headers[:route].should eql "#{Adhearsion::IMS::Plugin.config[:sbc_address]}|||4567"
             Adhearsion::IMS::Plugin.config[:exclude_routes] = []

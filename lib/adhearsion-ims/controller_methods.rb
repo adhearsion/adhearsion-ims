@@ -77,7 +77,13 @@ module Adhearsion
       # @param [Array] route headers
       # @return [Array] the routes with any nodes removed
       def remove_nodes(routes)
-        Adhearsion::IMS::Plugin.config[:exclude_routes].each { |route| routes.delete(route) }
+        routes_to_delete = nil
+        
+        Adhearsion::IMS::Plugin.config[:exclude_routes].each { |excluded_route| 
+          routes_to_delete = routes.grep /#{excluded_route}/ 
+        }
+        
+        routes_to_delete.each { |route| routes.delete(route) } if routes_to_delete
         routes
       end
   
